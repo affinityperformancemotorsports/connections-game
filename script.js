@@ -179,3 +179,22 @@ shuffleButton.addEventListener("click", function() {
 shuffleWords();
 createBoard();
 updateMistakes();
+
+const restartButton = document.getElementById("restart-button");
+
+restartButton.addEventListener("click", function() {
+    words = puzzle.flatMap(group => group.words);
+    selectedWords = [];
+    solvedGroups = [];
+    mistakes = 0;
+
+    solvedContainer.innerHTML = "";
+    message.textContent = "";
+
+    submitButton.disabled = false;
+    shuffleButton.disabled = false;
+
+    shuffleWords();
+    createBoard();
+    updateMistakes();
+});
