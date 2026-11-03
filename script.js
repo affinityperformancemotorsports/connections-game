@@ -25,11 +25,25 @@ const words = puzzle.flatMap(group => group.words);
 
 const gameBoard = document.getElementById("game-board");
 
+let selectedWords = [];
+
 function shuffleWords() {
     for (let i = words.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
 
         [words[i], words[j]] = [words[j], words[i]];
+    }
+}
+
+function selectWord(tile, word) {
+    if (selectedWords.includes(word)) {
+        selectedWords = selectedWords.filter(item => item !== word);
+        tile.classList.remove("selected");
+    } else {
+        if (selectedWords.length < 4) {
+            selectedWords.push(word);
+            tile.classList.add("selected");
+        }
     }
 }
 
@@ -41,6 +55,10 @@ function createBoard() {
 
         tile.textContent = words[i];
         tile.classList.add("tile");
+
+        tile.addEventListener("click", function() {
+            selectWord(tile, words[i]);
+        });
 
         gameBoard.appendChild(tile);
     }
