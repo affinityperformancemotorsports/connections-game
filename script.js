@@ -32,6 +32,7 @@ const gameBoard = document.getElementById("game-board");
 const message = document.getElementById("message");
 const submitButton = document.getElementById("submit-button");
 const shuffleButton = document.getElementById("shuffle-button");
+const restartButton = document.getElementById("restart-button");
 
 const solvedContainer = document.createElement("div");
 solvedContainer.id = "solved-groups";
@@ -112,14 +113,12 @@ function submitGuess() {
 
     if (correctGroup) {
         solvedGroups.push(correctGroup);
-
         showSolvedGroup(correctGroup);
 
         words = words.filter(word => !correctGroup.words.includes(word));
         selectedWords = [];
 
         createBoard();
-
         message.textContent = "Correct!";
 
         if (solvedGroups.length === 4) {
@@ -132,7 +131,6 @@ function submitGuess() {
     }
 
     mistakes++;
-
     updateMistakes();
 
     const oneAway = puzzle.some(group => {
@@ -169,20 +167,7 @@ function submitGuess() {
     }
 }
 
-submitButton.addEventListener("click", submitGuess);
-
-shuffleButton.addEventListener("click", function() {
-    shuffleWords();
-    createBoard();
-});
-
-shuffleWords();
-createBoard();
-updateMistakes();
-
-const restartButton = document.getElementById("restart-button");
-
-restartButton.addEventListener("click", function() {
+function restartGame() {
     words = puzzle.flatMap(group => group.words);
     selectedWords = [];
     solvedGroups = [];
@@ -197,4 +182,17 @@ restartButton.addEventListener("click", function() {
     shuffleWords();
     createBoard();
     updateMistakes();
+}
+
+submitButton.addEventListener("click", submitGuess);
+
+shuffleButton.addEventListener("click", function() {
+    shuffleWords();
+    createBoard();
 });
+
+restartButton.addEventListener("click", restartGame);
+
+shuffleWords();
+createBoard();
+updateMistakes();
