@@ -1,8 +1,9 @@
-* { box-sizing:border-box;
+* {
+    box-sizing: border-box;
 }
 
-body { 
-    background-colour: #f5f3ed;
+body {
+    background-color: #f5f3ed;
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
@@ -10,73 +11,74 @@ body {
     color: #252525;
 }
 
-h1 { font-size: 36px;
-     margin-bottom: 10px;
-    }
-
-p { font-size: 16px;
-     margin-bottom: 30px;
-    }
-
-#game-board { 
-    display:grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 10px;
-    max-width:600px;
-    margin:30px auto;
+h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
 }
 
-.title {
+p {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.tile {
     background-color: #e8e6df;
     border: none;
     border-radius: 8px;
-    min-height:85px;
+    min-height: 85px;
     padding: 10px;
     font-size: 15px;
     font-weight: bold;
     cursor: pointer;
-    transition: background-colour 0.2s;
+    transition: background-color 0.2s;
 }
 
-.title:hover{
-    background-colour: #d8d5cc;
+.tile:hover {
+    background-color: #d8d5cc;
 }
 
-.title.selected{
+.tile.selected {
     background-color: #5c5c5c;
-    color:white;
+    color: white;
 }
 
-button{
+button {
     padding: 12px 25px;
     border-radius: 25px;
     border: 1px solid #252525;
-    background-color:transparent;
+    background-color: transparent;
     font-size: 14px;
-    font-weight:bold;
+    font-weight: bold;
     cursor: pointer;
-    margin:5px;
+    margin: 5px;
 }
 
 button:hover {
-    background-color:#252525;
-    color:white;
+    background-color: #252525;
+    color: white;
 }
 
-#message{
-    margin-top:20px;
-    font-weight:bold;
+#message {
+    margin-top: 20px;
+    font-weight: bold;
 }
 
-@media(max-width: 500px){
-    #game-board{
-        gap:6px;
+@media (max-width: 500px) {
+    #game-board {
+        gap: 6px;
     }
 
-    .tile{
+    .tile {
         font-size: 11px;
         min-height: 70px;
-        padding:5px;
-        
+        padding: 5px;
     }
 }
